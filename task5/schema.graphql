@@ -1,0 +1,35 @@
+schema {
+  query: Query
+}
+
+type Query {
+  # Соответствует GET /clients/{id}
+  client(id: ID!): Client
+}
+
+type Client {
+  id: ID!
+  name: String
+  age: Int
+
+  # Соответствует GET /clients/{id}/documents
+  documents: [Document!]!
+
+  # Соответствует GET /clients/{id}/relatives
+  relatives: [Relative!]!
+}
+
+type Document {
+  id: ID!
+  type: String
+  number: String
+  issueDate: String
+  expiryDate: String
+}
+
+type Relative {
+  id: ID!
+  relationType: String
+  name: String
+  age: Int
+}
